@@ -2,6 +2,40 @@
 
 > Package changelog.
 
+<section class="release" id="unreleased">
+
+## Unreleased (2026-03-29)
+
+<section class="commits">
+
+### Commits
+
+<details>
+
+-   [`7ab721b`](https://github.com/stdlib-js/stdlib/commit/7ab721ba37db35ef62c6b658ba6ddeef4f8bff64) - **test:** use accessor functions for accessing ndarray meta data _(by Athan Reines)_
+
+</details>
+
+</section>
+
+<!-- /.commits -->
+
+<section class="contributors">
+
+### Contributors
+
+A total of 1 person contributed to this release. Thank you to this contributor:
+
+-   Athan Reines
+
+</section>
+
+<!-- /.contributors -->
+
+</section>
+
+<!-- /.release -->
+
 <section class="release" id="v0.2.2">
 
 ## 0.2.2 (2026-02-08)
