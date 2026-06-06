@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2023 The Stdlib Authors.
@@ -16,18 +16,31 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { ArrayLike } from '@stdlib/types/array';
+import { ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Broadcast ndarrays to a common shape.
+* Broadcasts ndarrays to a common shape.
 *
-* @module @stdlib/ndarray-base-maybe-broadcast-arrays
+* ## Notes
+*
+* -   The function throws an error if provided broadcast-incompatible ndarrays.
+* -   If a provided ndarray has a shape matching the common shape, the function returns the provided ndarray.
+* -   If a provided ndarray has a different (broadcast compatible) shape than the common shape, the function returns a new (base) ndarray view of the provided ndarray's data. The view is typically **not** contiguous. As more than one element of a returned view may refer to the same memory location, writing to a view may affect multiple elements. If you need to write to a returned array, copy the array before performing operations which may mutate elements.
+* -   A returned array view is a "base" ndarray, and, thus, a returned array view does not perform bounds checking or afford any of the guarantees of the non-base ndarray constructor. The primary intent of this function is to broadcast ndarray-like objects within internal implementations and to do so with minimal overhead.
+*
+* @param arrays - input arrays
+* @throws input arrays must be broadcast compatible
+* @returns list of broadcasted arrays
 *
 * @example
 * var getShape = require( '@stdlib/ndarray-shape' );
 * var array = require( '@stdlib/ndarray-array' );
 * var zeros = require( '@stdlib/ndarray-zeros' );
-* var maybeBroadcastArrays = require( '@stdlib/ndarray-base-maybe-broadcast-arrays' );
 *
 * var x1 = array( [ [ 1, 2 ], [ 3, 4 ] ] );
 * // returns <ndarray>[ [ 1, 2 ], [ 3, 4 ] ]
@@ -56,12 +69,9 @@
 * shy = getShape( y2 );
 * // returns [ 3, 2, 2 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function maybeBroadcastArrays( arrays: ArrayLike<ndarray> ): Array<ndarray>;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = maybeBroadcastArrays;
