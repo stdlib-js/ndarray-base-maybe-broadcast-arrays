@@ -1,19 +1,51 @@
-"use strict";var n=function(e,r){return function(){return r||e((r={exports:{}}).exports,r),r.exports}};var o=n(function(m,i){"use strict";var v=require("@stdlib/ndarray-base-broadcast-shapes"),p=require("@stdlib/ndarray-base-maybe-broadcast-array"),c=require("@stdlib/ndarray-base-shape");function h(e){var r,t,s,u,a;for(u=e.length,r=[],a=0;a<u;a++)r.push(c(e[a],!1));if(s=v(r),s===null)throw new Error("invalid arguments. Input arrays must be broadcast compatible.");for(t=[],a=0;a<u;a++)t.push(p(e[a],s));return t}i.exports=h});var b=o();module.exports=b;
+/** @license Apache-2.0 */
+
+'use strict';
+
 /**
-* @license Apache-2.0
+* Broadcast ndarrays to a common shape.
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* @module @stdlib/ndarray-base-maybe-broadcast-arrays
 *
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
+* @example
+* var getShape = require( '@stdlib/ndarray-shape' );
+* var array = require( '@stdlib/ndarray-array' );
+* var zeros = require( '@stdlib/ndarray-zeros' );
+* var maybeBroadcastArrays = require( '@stdlib/ndarray-base-maybe-broadcast-arrays' );
 *
-*    http://www.apache.org/licenses/LICENSE-2.0
+* var x1 = array( [ [ 1, 2 ], [ 3, 4 ] ] );
+* // returns <ndarray>[ [ 1, 2 ], [ 3, 4 ] ]
 *
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
+* var shx = getShape( x1 );
+* // returns [ 2, 2 ]
+*
+* var y1 = zeros( [ 3, 2, 2 ] );
+* // returns <ndarray>[ [ [ 0, 0 ], [ 0, 0 ] ], [ [ 0, 0 ], [ 0, 0 ] ], [ [ 0, 0 ], [ 0, 0 ] ] ]
+*
+* var shy = getShape( y1 );
+* // returns [ 3, 2, 2 ]
+*
+* var out = maybeBroadcastArrays( [ x1, y1 ] );
+* // returns [ <ndarray>, <ndarray> ]
+*
+* var x2 = out[ 0 ];
+* // returns <ndarray>[ [ [ 1, 2 ], [ 3, 4 ] ], [ [ 1, 2 ], [ 3, 4 ] ], [ [ 1, 2 ], [ 3, 4 ] ] ]
+*
+* var y2 = out[ 1 ];
+* // returns <ndarray>[ [ [ 0, 0 ], [ 0, 0 ] ], [ [ 0, 0 ], [ 0, 0 ] ], [ [ 0, 0 ], [ 0, 0 ] ] ]
+*
+* shx = getShape( x2 );
+* // returns [ 3, 2, 2 ]
+*
+* shy = getShape( y2 );
+* // returns [ 3, 2, 2 ]
 */
-//# sourceMappingURL=index.js.map
+
+// MODULES //
+
+var main = require( './main.js' );
+
+
+// EXPORTS //
+
+module.exports = main;
